@@ -1,0 +1,10 @@
+.model or
+
+.inputs I II
+
+.outputs O
+
+.names I II O
+00 0
+
+.end

@@ -1,0 +1,60 @@
+.model DATAPATH
+
+# costante 1 #
+.names uno
+1 1
+
+# costante 0 #
+.names zero
+
+
+# input #
+.inputs pHi7 pHi6 pHi5 pHi4 pHi3 pHi2 pHi1 pHi0 fine_operazione valvola_acido valvola_basico start01
+
+# output #
+.outputs pHf7 pHf6 pHf5 pHf4 pHf3 pHf2 pHf1 pHf0 nclk7 nclk6 nclk5 nclk4 nclk3 nclk2 nclk1 nclk0 pHout7 pHout6 pHout5 pHout4 pHout3 pHout2 pHout1 pHout0
+
+# or #
+.subckt or I=valvola_acido II=valvola_basico O=OO
+
+# adder_01 #
+.subckt adder I7=zero I6=zero I5=zero I4=zero I3=zero I2=zero I1=zero I0=uno II7=O7MUX01 II6=O6MUX01 II5=O5MUX01 II4=O4MUX01 II3=O3MUX01 II2=O2MUX01 II1=O1MUX01 II0=O0MUX01 A7=O7A01 A6=O6A01 A5=O5A01 A4=O4A01 A3=O3A01 A2=O2A01 A1=O1A01 A0=O0A01
+
+# multiplexer_01 #
+.subckt multiplexer S=OO I7=uno I6=uno I5=uno I4=uno I3=uno I2=uno I1=uno I0=uno II7=O7R II6=O6R II5=O5R II4=O4R II3=O3R II2=O2R II1=O1R II0=O0R O7=O7MUX01 O6=O6MUX01 O5=O5MUX01 O4=O4MUX01 O3=O3MUX01 O2=O2MUX01 O1=O1MUX01 O0=O0MUX01
+
+# register_01 #
+.subckt register I7=O7A01 I6=O6A01 I5=O5A01 I4=O4A01 I3=O3A01 I2=O2A01 I1=O1A01 I0=O0A01 O7=O7R O6=O6R O5=O5R O4=O4R O3=O3R O2=O2R O1=O1R O0=O0R
+
+# multiplexer_02 #
+.subckt multiplexer S=fine_operazione I7=zero I6=zero I5=zero I4=zero I3=zero I2=zero I1=zero I0=zero II7=O7R II6=O6R II5=O5R II4=O4R II3=O3R II2=O2R II1=O1R II0=O0R O7=nclk7 O6=nclk6 O5=nclk5 O4=nclk4 O3=nclk3 O2=nclk2 O1=nclk1 O0=nclk0
+
+# multiplexer_03 #
+.subckt multiplexer S=start01 I7=pHi7 I6=pHi6 I5=pHi5 I4=pHi4 I3=pHi3 I2=pHi2 I1=pHi1 I0=pHi0 II7=O7R02 II6=O6R02 II5=O5R02 II4=O4R02 II3=O3R02 II2=O2R02 II1=O1R02 II0=O0R02 O7=O7MUX03 O6=O6MUX03 O5=O5MUX03 O4=O4MUX03 O3=O3MUX03 O2=O2MUX03 O1=O1MUX03 O0=O0MUX03
+
+# multiplexer_04 #
+.subckt multiplexer S=valvola_acido I7=zero I6=zero I5=zero I4=zero I3=zero I2=zero I1=zero I0=zero II7=zero II6=zero II5=zero II4=zero II3=uno II2=zero II1=zero II0=zero O7=O7MUX04 O6=O6MUX04 O5=O5MUX04 O4=O4MUX04 O3=O3MUX04 O2=O2MUX04 O1=O1MUX04 O0=O0MUX04
+
+# subtractor #
+.subckt subtractor I7=O7MUX03 I6=O6MUX03 I5=O5MUX03 I4=O4MUX03 I3=O3MUX03 I2=O2MUX03 I1=O1MUX03 I0=O0MUX03 II7=O7MUX04 II6=O6MUX04 II5=O5MUX04 II4=O4MUX04 II3=O3MUX04 II2=O2MUX04 II1=O1MUX04 II0=O0MUX04 S7=O7S S6=O6S S5=O5S S4=O4S S3=O3S S2=O2S S1=O1S S0=O0S
+
+# multiplexer_05 #
+.subckt multiplexer S=valvola_basico I7=zero I6=zero I5=zero I4=zero I3=zero I2=zero I1=zero I0=zero II7=zero II6=zero II5=zero II4=zero II3=zero II2=uno II1=zero II0=zero O7=O7MUX05 O6=O6MUX05 O5=O5MUX05 O4=O4MUX05 O3=O3MUX05 O2=O2MUX05 O1=O1MUX05 O0=O0MUX05
+
+# adder_02 #
+.subckt adder I7=O7S I6=O6S I5=O5S I4=O4S I3=O3S I2=O2S I1=O1S I0=O0S II7=O7MUX05 II6=O6MUX05 II5=O5MUX05 II4=O4MUX05 II3=O3MUX05 II2=O2MUX05 II1=O1MUX05 II0=O0MUX05 A7=pHout7 A6=pHout6 A5=pHout5 A4=pHout4 A3=pHout3 A2=pHout2 A1=pHout1 A0=pHout0
+
+# register_02 #
+.subckt register I7=pHout7 I6=pHout6 I5=pHout5 I4=pHout4 I3=pHout3 I2=pHout2 I1=pHout1 I0=pHout0 O7=O7R02 O6=O6R02 O5=O5R02 O4=O4R02 O3=O3R02 O2=O2R02 O1=O1R02 O0=O0R02
+
+# multiplexer_06 #
+.subckt multiplexer S=fine_operazione I7=zero I6=zero I5=zero I4=zero I3=zero I2=zero I1=zero I0=zero II7=O7R02 II6=O6R02 II5=O5R02 II4=O4R02 II3=O3R02 II2=O2R02 II1=O1R02 II0=O0R02 O7=pHf7 O6=pHf6 O5=pHf5 O4=pHf4 O3=pHf3 O2=pHf2 O1=pHf1 O0=pHf0
+
+# sources #
+.search or.blif
+.search adder.blif
+.search register.blif
+.search subtractor.blif
+.search multiplexer.blif
+
+.end

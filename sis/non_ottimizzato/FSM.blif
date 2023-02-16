@@ -1,0 +1,92 @@
+.model FSM
+
+.inputs RST START pHINIZIALE7 pHINIZIALE6 pHINIZIALE5 pHINIZIALE4 pHINIZIALE3 pHINIZIALE2 pHINIZIALE1 pHINIZIALE0 BIT7 BIT6 BIT5 BIT4 BIT3 BIT2 BIT1 BIT0
+
+.outputs FINE_OPERAZIONE ERRORE_SENSORE VALVOLA_ACIDO VALVOLA_BASICO START01
+
+.start_kiss
+.i 18
+.o 5
+.s 2
+.p 51
+.r RE
+
+#(ingressi, stato presente, stato prossimo, uscita)
+#Restart State#
+# RST <1> · Get back to Restart State #
+1----------------- RE RE 00000
+00---------------- RE RE 00000
+
+# [0;7) · Valvola Basico <1> · Go forward to pH State #
+0100-------------- RE PH 00010
+010-0------------- RE PH 00010
+010--0------------ RE PH 00010
+
+# [7;8] · Get back to Restart State #
+010111------------ RE PH 00000
+0110000000-------- RE PH 00000
+
+# (8;14] · Valvola Acido <1> · Go forward to pH State #
+0110-----1-------- RE PH 00100
+011-0----1-------- RE PH 00100
+0110----1--------- RE PH 00100
+011-0---1--------- RE PH 00100
+0110---1---------- RE PH 00100
+011-0--1---------- RE PH 00100
+0110--1----------- RE PH 00100
+011-0-1----------- RE PH 00100
+0110-1------------ RE PH 00100
+011-01------------ RE PH 00100
+01101------------- RE PH 00100
+01110------------- RE PH 00100
+011-100000-------- RE PH 00100
+0111-00000-------- RE PH 00100
+
+# (14;+infinito) · Errore Sensore <1> · Get back to Restart State #
+01111----1-------- RE RE 01000
+01111---1--------- RE RE 01000
+01111--1---------- RE RE 01000
+01111-1----------- RE RE 01000
+011111------------ RE RE 01000
+
+#pH State#
+# RST <1> · Go back to Restart State #
+1----------------- PH RE 00000
+
+# [0;7) · Valvola Basico <1> · Get back to pH State #
+0---------00------ PH PH 00011
+0---------0-0----- PH PH 00011
+0---------0--0---- PH PH 00011
+
+# [7;8] · Get back to Restart State #
+0---------0111---- PH RE 10001
+0---------10000000 PH RE 10001
+
+# (8;14] · Valvola Acido <1> · Get back to pH State #
+0---------10-----1 PH PH 00101
+0---------1-0----1 PH PH 00101
+0---------10----1- PH PH 00101
+0---------1-0---1- PH PH 00101
+0---------10---1-- PH PH 00101
+0---------1-0--1-- PH PH 00101
+0---------10--1--- PH PH 00101
+0---------1-0-1--- PH PH 00101
+0---------10-1---- PH PH 00101
+0---------1-01---- PH PH 00101
+0---------101----- PH PH 00101
+0---------110----- PH PH 00101
+0---------1-100000 PH PH 00101
+0---------11-00000 PH PH 00101
+
+# (14;+infinito) · Errore Sensore <1> · Go back to Restart State #
+0---------111----1 PH RE 01000
+0---------111---1- PH RE 01000
+0---------111--1-- PH RE 01000
+0---------111-1--- PH RE 01000
+0---------1111---- PH RE 01000
+
+
+
+.end_kiss
+
+.end

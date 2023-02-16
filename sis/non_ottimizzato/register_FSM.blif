@@ -1,0 +1,9 @@
+.model register_FSM
+
+.inputs g
+
+.outputs SFSM
+
+.latch g SFSM re NIL 0
+
+.end

@@ -1,0 +1,18 @@
+.model register
+
+.inputs I7 I6 I5 I4 I3 I2 I1 I0
+
+.outputs O7 O6 O5 O4 O3 O2 O1 O0
+
+.subckt source_register I=I7 O=O7
+.subckt source_register I=I6 O=O6
+.subckt source_register I=I5 O=O5
+.subckt source_register I=I4 O=O4
+.subckt source_register I=I3 O=O3
+.subckt source_register I=I2 O=O2
+.subckt source_register I=I1 O=O1
+.subckt source_register I=I0 O=O0
+
+.search source_register.blif
+
+.end
