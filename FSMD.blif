@@ -1,0 +1,203 @@
+.model FSMD
+.inputs RST START pHi7 pHi6 pHi5 pHi4 pHi3 pHi2 pHi1 pHi0
+.outputs fine_operazione errore_sensore valvola_acido valvola_basico pHf7 pHf6 \
+pHf5 pHf4 pHf3 pHf2 pHf1 pHf0 NCLK7 NCLK6 NCLK5 NCLK4 NCLK3 NCLK2 NCLK1 NCLK0
+.latch    [28] LatchOut_v18   1
+.latch    O7S pHOUT7 re NIL 0
+.latch    pHout6 pHOUT6 re NIL 0
+.latch    pHout5 pHOUT5 re NIL 0
+.latch    pHout4 pHOUT4 re NIL 0
+.latch    pHout3 pHOUT3 re NIL 0
+.latch    pHout2 pHOUT2 re NIL 0
+.latch    O1MUX03 pHOUT1 re NIL 0
+.latch    O0MUX03 pHOUT0 re NIL 0
+.latch    O7A01 O7R re NIL 0
+.latch    O6A01 O6R re NIL 0
+.latch    O5A01 O5R re NIL 0
+.latch    O4A01 O4R re NIL 0
+.latch    O3A01 O3R re NIL 0
+.latch    O2A01 O2R re NIL 0
+.latch    O1A01 O1R re NIL 0
+.latch    O0A01 O0R re NIL 0
+.names pHOUT6 pHOUT5 pHOUT4 pHOUT3 pHOUT2 pHOUT1 pHOUT0 start01 [330] [334] \
+fine_operazione
+-------10- 1
+0000000--1 1
+.names start01 [315] [319] [326] [327] errore_sensore
+0---1 1
+-101- 1
+.names pHi6 pHi5 fine_operazione errore_sensore [315] [326] [334] \
+valvola_acido
+--0---1 1
+10--1-- 1
+-1-01-- 1
+-0--11- 1
+.names pHi7 pHi4 pHOUT7 [314] [319] [327] [330] valvola_basico
+00-1--- 1
+0--11-- 1
+--0--11 1
+.names fine_operazione pHOUT7 pHf7
+11 1
+.names fine_operazione pHOUT6 pHf6
+11 1
+.names fine_operazione pHOUT5 pHf5
+11 1
+.names fine_operazione pHOUT4 pHf4
+11 1
+.names fine_operazione pHOUT3 pHf3
+11 1
+.names fine_operazione pHOUT2 pHf2
+11 1
+.names fine_operazione pHOUT1 pHf1
+11 1
+.names fine_operazione pHOUT0 pHf0
+11 1
+.names fine_operazione O7R NCLK7
+11 1
+.names fine_operazione O6R NCLK6
+11 1
+.names fine_operazione O5R NCLK5
+11 1
+.names fine_operazione O4R NCLK4
+11 1
+.names fine_operazione O3R NCLK3
+11 1
+.names fine_operazione O2R NCLK2
+11 1
+.names fine_operazione O1R NCLK1
+11 1
+.names fine_operazione O0R NCLK0
+11 1
+.names pHOUT7 pHOUT4 pHOUT3 pHOUT2 pHOUT1 pHOUT0 [318] [327] start01
+0------1 1
+------11 1
+-00000-1 1
+.names pHout5 O5S lout6 [316] pHout6
+01-- 1
+--11 1
+--00 1
+.names O5S [331] pHout5
+11 1
+00 1
+.names O4S [286] pHout4
+11 1
+00 1
+.names valvola_acido [39] lout4 [286] [317] pHout3
+--1-- 1
+-1-1- 1
+0--11 1
+.names valvola_basico [39] [322] pHout2
+10- 1
+-01 1
+.names fine_operazione errore_sensore [314] [327] [28]
+1--- 1
+-1-- 1
+--00 1
+.names pHi7 start01 lout6 [316] [334] O7S
+--10- 1
+--0-1 1
+100-- 1
+.names lout6 lout5 [323] O5S
+1-- 1
+-01 1
+.names lout5 lout4 [324] O4S
+1-- 1
+-01 1
+.names valvola_basico [322] [39]
+11 1
+.names valvola_acido valvola_basico OO
+1- 1
+-1 1
+.names O7R O6R OO O6A01 O7A01
+1--1 1
+101- 1
+0110 1
+.names O6R O5R OO O5A01 [328] O6A01
+1--1- 1
+1---0 1
+0110- 1
+.names O5R O4R cout4 [328] [329] O5A01
+--01- 1
+1---0 1
+-110- 1
+.names cout4 [329] O4A01
+01 1
+10 1
+.names O3R O2R O1R O0R OO cout4
+----0 1
+1111- 1
+.names O3R O2R cout4 O2A01 O3A01
+1-0- 1
+-100 1
+.names O2R O1R OO O1A01 O0A01 O2A01
+1--1- 1
+1---1 1
+011-0 1
+.names O1R OO O0A01 O1A01
+1-1 1
+010 1
+.names O0R OO O0A01
+01 1
+.names start01 pHi1 pHOUT1 O1MUX03
+01- 1
+1-1 1
+.names start01 pHi0 pHOUT0 O0MUX03
+01- 1
+1-1 1
+.names lout5 [323] lout6
+10 1
+.names lout4 [324] lout5
+10 1
+.names valvola_acido [317] lout4
+10 1
+.names [39] [317] [286]
+0- 1
+-0 1
+.names RST START LatchOut_v18 [314]
+011 1
+.names pHi7 [314] [315]
+11 1
+.names pHi6 pHOUT6 start01 [316]
+-01 1
+0-0 1
+.names pHi3 pHOUT3 start01 [317]
+-11 1
+1-0 1
+.names pHOUT6 pHOUT5 [318]
+0- 1
+-0 1
+.names pHi6 pHi5 [319]
+0- 1
+-0 1
+.names pHi2 pHOUT2 start01 [322]
+-11 1
+1-0 1
+.names pHi5 pHOUT5 start01 [323]
+-11 1
+1-0 1
+.names pHi4 pHOUT4 start01 [324]
+-11 1
+1-0 1
+.names pHi4 pHi3 pHi2 pHi1 pHi0 [326]
+1---- 1
+-1--- 1
+--1-- 1
+---1- 1
+----1 1
+.names RST LatchOut_v18 [327]
+00 1
+.names O5R OO [328]
+1- 1
+-0 1
+.names O4R OO [329]
+1- 1
+-0 1
+.names pHOUT4 [318] [330]
+0- 1
+-1 1
+.names pHout4 O4S [331]
+1- 1
+-0 1
+.names pHOUT7 start01 [334]
+11 1
+.end

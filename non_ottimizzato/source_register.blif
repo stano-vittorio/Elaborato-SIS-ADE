@@ -1,0 +1,9 @@
+.model source_register
+
+.inputs I
+
+.outputs O
+
+.latch I O re NIL 0
+
+.end

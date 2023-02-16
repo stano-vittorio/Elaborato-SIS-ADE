@@ -1,0 +1,11 @@
+.model source_multiplexer
+
+.inputs S0 IBIT IIBIT
+
+.outputs SAMEBIT
+
+.names S0 IBIT IIBIT SAMEBIT
+01- 1
+1-1 1
+
+.end

@@ -1,0 +1,19 @@
+.model source_subtractor
+
+.inputs I II lin
+
+.outputs sub lout
+
+.names lin I II sub
+001 1
+010 1
+100 1
+111 1
+
+.names lin I II lout
+001 1
+100 1
+101 1
+111 1
+
+.end
