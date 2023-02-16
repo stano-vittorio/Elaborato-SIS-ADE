@@ -1,0 +1,21 @@
+.model adder
+
+.names cin
+
+
+.inputs I7 I6 I5 I4 I3 I2 I1 I0 II7 II6 II5 II4 II3 II2 II1 II0
+
+.outputs A7 A6 A5 A4 A3 A2 A1 A0
+
+.subckt source_adder cin=cin I=I0 II=II0 sum=A0 cout=cout1
+.subckt source_adder cin=cout1 I=I1 II=II1 sum=A1 cout=cout2
+.subckt source_adder cin=cout2 I=I2 II=II2 sum=A2 cout=cout3 
+.subckt source_adder cin=cout3 I=I3 II=II3 sum=A3 cout=cout4 
+.subckt source_adder cin=cout4 I=I4 II=II4 sum=A4 cout=cout5 
+.subckt source_adder cin=cout5 I=I5 II=II5 sum=A5 cout=cout6 
+.subckt source_adder cin=cout6 I=I6 II=II6 sum=A6 cout=cout7 
+.subckt source_adder cin=cout7 I=I7 II=II7 sum=A7 cout=cout
+
+.search source_adder.blif
+
+.end

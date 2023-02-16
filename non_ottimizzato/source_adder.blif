@@ -1,0 +1,19 @@
+.model source_adder
+
+.inputs cin I II
+
+.outputs sum cout
+
+.names cin I II sum
+001 1
+010 1
+100 1
+111 1
+
+.names cin I II cout
+011 1
+101 1
+110 1
+111 1
+
+.end
